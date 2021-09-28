@@ -18,6 +18,7 @@ public class ProibeEmailDuplicadoAutorValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
+
         return AutorForm.class.isAssignableFrom(clazz);
     }
 
