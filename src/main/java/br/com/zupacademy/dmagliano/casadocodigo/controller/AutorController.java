@@ -8,11 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
-@RestController("/autores")
+@RestController
+@RequestMapping("/autores")
 public class AutorController {
 
     @Autowired
@@ -21,9 +24,16 @@ public class AutorController {
     @PostMapping
     public ResponseEntity cadastra(@RequestBody @Valid AutorForm autorForm){
 
-        Autor autor = autorForm.toEntity();
-        autorRepository.save(autor);
+        String emailAutor = autorForm.getEmail();
 
-        return ResponseEntity.ok().build();
+        if (autorRepository.existsByEmail(emailAutor)==true) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        else {
+            Autor autor = autorForm.toEntity();
+            autorRepository.save(autor);
+
+            return ResponseEntity.ok().build();
+        }
     }
 }
