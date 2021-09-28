@@ -1,4 +1,4 @@
-package br.com.zupacademy.dmagliano.casadocodigo.controller.dto;
+package br.com.zupacademy.dmagliano.casadocodigo.controller.validator.dto;
 
 public class FieldErrorOutputDto {
 

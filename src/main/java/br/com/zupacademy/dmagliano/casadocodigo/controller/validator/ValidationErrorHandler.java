@@ -1,6 +1,6 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller.validator;
 
-import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.ValidationErrorsOutputDto;
+import br.com.zupacademy.dmagliano.casadocodigo.controller.validator.dto.ValidationErrorsOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
