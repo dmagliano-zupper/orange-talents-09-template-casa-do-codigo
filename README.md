@@ -1,3 +1,4 @@
-# Por favor faça um Fork desse projeto!
+# Projeto Casa do Código #OT9!
+###Diogo Magliano
 
-## Está em dúvida de como fazer um Fork? Não tem problema! [Aqui tem uma explicação do que entendemos que você deve considerar!](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
+Implementação do código do desafio Casa do Código para cadastro de uma editora para o OT9
