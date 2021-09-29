@@ -1,9 +1,5 @@
 package br.com.zupacademy.dmagliano.casadocodigo.model;
 
-import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroCadastroForm;
-import br.com.zupacademy.dmagliano.casadocodigo.controller.validator.UniqueValue;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

@@ -1,9 +1,6 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller.dto;
 
-import br.com.zupacademy.dmagliano.casadocodigo.model.Autor;
-import br.com.zupacademy.dmagliano.casadocodigo.model.Categoria;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Livro;
-import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
