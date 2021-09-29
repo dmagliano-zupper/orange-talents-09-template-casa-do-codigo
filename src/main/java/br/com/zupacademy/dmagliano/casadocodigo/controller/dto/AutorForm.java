@@ -1,5 +1,6 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller.dto;
 
+import br.com.zupacademy.dmagliano.casadocodigo.controller.validator.UniqueValue;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Autor;
 import org.hibernate.validator.constraints.Length;
 
@@ -13,6 +14,7 @@ public class AutorForm {
 
     @NotBlank
     @Email
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
 
     @NotBlank

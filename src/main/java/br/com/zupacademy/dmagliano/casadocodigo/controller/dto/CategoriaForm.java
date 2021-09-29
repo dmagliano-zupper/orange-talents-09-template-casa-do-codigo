@@ -1,5 +1,6 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller.dto;
 
+import br.com.zupacademy.dmagliano.casadocodigo.controller.validator.UniqueValue;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Categoria;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,6 +10,7 @@ public class CategoriaForm {
 
     @NotBlank
     @JsonProperty
+    @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
     public CategoriaForm() {
