@@ -1,6 +1,7 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller;
 
 import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroCadastroForm;
+import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroDetalheDTO;
 import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroListaDto;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Autor;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Categoria;
@@ -11,6 +12,7 @@ import br.com.zupacademy.dmagliano.casadocodigo.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,6 +44,20 @@ public class LivroController {
     public List<LivroListaDto> listaTodos() {
         List<Livro> listaLivro = livroRepository.findAll();
         return LivroListaDto.toDtoList(listaLivro);
+    }
+
+    @GetMapping
+    @RequestMapping("/{id}")
+    public ResponseEntity detalheLivro(@PathVariable Long id) {
+
+        Optional<Livro> livro = livroRepository.findById(id);
+        if (livro.isPresent()) {
+            LivroDetalheDTO detalheDTO = new LivroDetalheDTO(livro.get());
+            return ResponseEntity.ok(detalheDTO);
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     private Autor livroGetAutor(Long idAutor) {

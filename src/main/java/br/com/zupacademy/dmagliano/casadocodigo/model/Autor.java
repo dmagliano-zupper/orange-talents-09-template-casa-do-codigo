@@ -1,5 +1,7 @@
 package br.com.zupacademy.dmagliano.casadocodigo.model;
 
+import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.AutorDetalheDTO;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +32,16 @@ public class Autor {
         this.descricao = descricao;
     }
 
+
+    public static AutorDetalheDTO getDetalhe(Autor autor) {
+        return new AutorDetalheDTO(autor);
+    }
+
     public String getNome() {
         return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }
