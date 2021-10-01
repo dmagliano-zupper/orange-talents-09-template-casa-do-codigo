@@ -1,7 +1,7 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller;
 
 import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroCadastroForm;
-import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroDetalheDTO;
+import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroDetalheDto;
 import br.com.zupacademy.dmagliano.casadocodigo.controller.dto.LivroListaDto;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Autor;
 import br.com.zupacademy.dmagliano.casadocodigo.model.Categoria;
@@ -52,12 +52,26 @@ public class LivroController {
 
         Optional<Livro> livro = livroRepository.findById(id);
         if (livro.isPresent()) {
-            LivroDetalheDTO detalheDTO = new LivroDetalheDTO(livro.get());
+            LivroDetalheDto detalheDTO = new LivroDetalheDto(livro.get());
             return ResponseEntity.ok(detalheDTO);
         }
         else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    private Livro formToEntity(LivroCadastroForm livroform) {
+        return new Livro(
+                livroform.getTitulo(),
+                livroform.getResumo(),
+                livroform.getSumario(),
+                livroform.getPreco(),
+                livroform.getNumPaginas(),
+                livroform.getIsbn(),
+                livroform.getDataPublicacao(),
+                livroGetCategoria(livroform.getIdCategoria()),
+                livroGetAutor(livroform.getIdAutor())
+        );
     }
 
     private Autor livroGetAutor(Long idAutor) {
@@ -76,23 +90,5 @@ public class LivroController {
         } else {
             return null;
         }
-
     }
-
-    private Livro formToEntity(LivroCadastroForm livroform) {
-        return new Livro(
-                livroform.getTitulo(),
-                livroform.getResumo(),
-                livroform.getSumario(),
-                livroform.getPreco(),
-                livroform.getNumPaginas(),
-                livroform.getIsbn(),
-                livroform.getDataPublicacao(),
-                livroGetCategoria(livroform.getIdCategoria()),
-                livroGetAutor(livroform.getIdAutor())
-        );
-
-    }
-
-
 }

@@ -6,7 +6,7 @@ import br.com.zupacademy.dmagliano.casadocodigo.model.Livro;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class LivroDetalheDTO {
+public class LivroDetalheDto {
 
     private String titulo;
     private String resumo;
@@ -16,11 +16,11 @@ public class LivroDetalheDTO {
     private String isbn;
     private LocalDate dataPublicacao;
     private String categoria;
-    private AutorDetalheDTO autorDetalhe;
+    private AutorDetalheDto autorDetalhe;
 
-    public LivroDetalheDTO(String titulo, String resumo, String sumario,
+    public LivroDetalheDto(String titulo, String resumo, String sumario,
                            BigDecimal preco, Integer numPaginas, String isbn,
-                           LocalDate dataPublicacao, String categoria, AutorDetalheDTO autorDetalhe) {
+                           LocalDate dataPublicacao, String categoria, AutorDetalheDto autorDetalhe) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
@@ -32,7 +32,7 @@ public class LivroDetalheDTO {
         this.autorDetalhe = autorDetalhe;
     }
 
-    public LivroDetalheDTO(Livro livro) {
+    public LivroDetalheDto(Livro livro) {
         this.titulo = livro.getTitulo();
         this.resumo = livro.getResumo();
         this.sumario = livro.getSumario();
@@ -76,7 +76,7 @@ public class LivroDetalheDTO {
         return categoria;
     }
 
-    public AutorDetalheDTO getAutorDetalhe() {
+    public AutorDetalheDto getAutorDetalhe() {
         return autorDetalhe;
     }
 }
