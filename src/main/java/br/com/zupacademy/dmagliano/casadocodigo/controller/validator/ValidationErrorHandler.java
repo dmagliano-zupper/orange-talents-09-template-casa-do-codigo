@@ -1,5 +1,6 @@
 package br.com.zupacademy.dmagliano.casadocodigo.controller.validator;
 
+import br.com.zupacademy.dmagliano.casadocodigo.controller.validator.dto.FieldErrorOutputDto;
 import br.com.zupacademy.dmagliano.casadocodigo.controller.validator.dto.ValidationErrorsOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -42,6 +43,24 @@ public class ValidationErrorHandler {
 
         return buildValidationErrors(globalErrors,
                 fieldErrors);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalArgumentException.class)
+    public FieldErrorOutputDto handleIllegalArgumentError(IllegalArgumentException exception) {
+
+        String message = exception.getLocalizedMessage();
+
+        return new FieldErrorOutputDto("",message);
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(IllegalStateException.class)
+    public FieldErrorOutputDto handleIllegalStateError(IllegalStateException exception) {
+
+        String message = exception.getLocalizedMessage();
+
+        return new FieldErrorOutputDto("",message);
     }
 
     private ValidationErrorsOutputDto buildValidationErrors(List<ObjectError> globalErrors,
