@@ -27,6 +27,10 @@ public class Estado {
     public Estado() {
     }
 
+    public Boolean pertencePais(Pais pais){
+        return this.pais.equals(pais);
+    }
+
     public String getName() {
         return nome;
     }
@@ -34,4 +38,5 @@ public class Estado {
     public Pais getPais() {
         return pais;
     }
+
 }
